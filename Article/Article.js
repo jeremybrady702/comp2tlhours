@@ -1,4 +1,4 @@
-window.addEventListener("load", e => {
+// window.addEventListener("load", e => {
   /* This is the data we will be using to create our article components */
   /* Look over this data, then proceed to line 91*/
   const data = [
@@ -86,16 +86,39 @@ window.addEventListener("load", e => {
       thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+    },
+    {
+      title: "New Article",
+      date: "Aug, 8th, 2019",
+      firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+      secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+      thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
     }
   ];
 
+  const article = document.querySelector('.articles');
+  
+  data.forEach(article => {
+    article.appendChild(createComponent(article.title, article.date, article.firstParagraph, article.secondParagraph, article.thirdParagraph))
+  });
+
   function createComponent(
-    title,
-    dateParam,
-    firstParam,
-    secondParam,
-    thirdParam
+    article,
+    date,
+    para1,
+    para2,
+    para3
   ) {
+    
     const article = document.createElement("div");
     const heading = document.createElement("h2");
     const date = document.createElement("p");
@@ -104,6 +127,8 @@ window.addEventListener("load", e => {
     const para3 = document.createElement("p");
     const expandButton = document.createElement("span");
 
+
+    articles.appendChild(article);
     article.appendChild(heading);
     article.appendChild(date);
     article.appendChild(para1);
@@ -113,19 +138,20 @@ window.addEventListener("load", e => {
 
     console.log(textContent);
 
-    heading.textContent = data.title;
-    date.textContent = data.date;
-    para1.textContent = data.firstParagraph;
-    para2.textContent = data.secondParagraph;
-    para3.textContent = data.thirdParagraph;
+    heading.textContent = title;
+    date.textContent = date;
+    para1.textContent = firstParagraph;
+    para2.textContent = secondParagraph;
+    para3.textContent = thirdParagraph;
     expandButton.textContent = "Expand";
 
     expandButton.addEventListener("click", () => {
       article.classList.toggle("article-open");
     });
 
-    return article;
+    return createComponent;
   }
+
 
   /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
     
@@ -151,4 +177,4 @@ window.addEventListener("load", e => {
     Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
   
   */
-});
+// });
